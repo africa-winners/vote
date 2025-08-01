@@ -1,0 +1,275 @@
+/* Importation d'une police plus minimaliste */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Styles généraux */
+
+:root {
+    --bg-color: #0d0d0d;
+    --card-color: rgba(255, 255, 255, 0.05);
+    --text-color: #f5f5f5;
+    --accent-color: #00e676;
+    /* Vert éclatant */
+    --link-color: #ffffff;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+
+/* Styles de la page d'introduction */
+
+.intro-page {
+    background-image: url('images/bg.jpg');
+    /* Ajoute une image de fond cool */
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    padding: 2rem;
+}
+
+.intro-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.intro-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.intro-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+
+/* Styles de la page principale des artistes */
+
+.main-page {
+    display: block;
+    padding: 4rem 2rem;
+}
+
+header {
+    margin-bottom: 3rem;
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #aaa;
+}
+
+.artistes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.artiste-card {
+    background: var(--card-color);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.artiste-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.artiste-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h2 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    color: var(--accent-color);
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+
+/* Styles des boutons */
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #00c853;
+    /* Une couleur un peu plus foncée au survol */
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 230, 118, 0.4);
+}
+
+.btn-intro {
+    font-size: 1.2rem;
+    padding: 15px 40px;
+}
+
+
+/* Styles de la page de paiement */
+
+.paiement-page {
+    background-color: var(--bg-color);
+}
+
+.paiement-box {
+    background: var(--card-color);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    text-align: center;
+}
+
+.paiement-box h1 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+}
+
+.montant-vote {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.montant-vote span {
+    font-weight: 700;
+    color: var(--link-color);
+}
+
+.instructions-paiement {
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.instructions-paiement h2 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-top: 0;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.instruction-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border-radius: 50%;
+    font-weight: 700;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.instruction-step p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.numero-momo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 0.5rem 0;
+}
+
+.artiste-info {
+    font-style: italic;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.note {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 2rem;
+}
+
+.btn-retour {
+    background-color: transparent;
+    border: 2px solid var(--link-color);
+    color: var(--link-color);
+}
+
+.btn-retour:hover {
+    background-color: var(--link-color);
+    color: var(--bg-color);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}

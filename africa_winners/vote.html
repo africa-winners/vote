@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement du vote</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="paiement-page">
+    <div class="paiement-box">
+        <h1>Vote pour <span id="nom-artiste"></span></h1>
+        <p class="montant-vote">Votre soutien : <span>100 F CFA par vote </span></p>
+
+        <div class="vote-compteur">
+            <h2>Votes actuels pour cet artiste :</h2>
+            <p id="compteur-votes" class="compteur"></p>
+        </div>
+
+        <div class="instructions-paiement">
+            <h2>Instructions de paiement</h2>
+            <p>Pour valider votre vote, suivez ces étapes simples :</p>
+            <div class="instruction-step">
+                <span class="step-number">1</span>
+                <p>Envoyez <strong>100 F CFA</strong> au numéro Mobile Money ci-dessous :</p>
+                <p class="numero-momo" id="numero-momo"></p>
+            </div>
+            <div class="instruction-step">
+                <span class="step-number">2</span>
+                <p>Ajoutez un **commentaire** ou une **référence** à la transaction en indiquant :</p>
+                <p class="artiste-info"><span id="artiste-commentaire"></span></p>
+            </div>
+            <p class="note">Votre vote sera comptabilisé une fois la transaction reçue.</p>
+        </div>
+
+        <a href="index.html" class="btn btn-retour">Retour aux artistes</a>
+    </div>
+
+    <script src="vote.js"></script>
+    <script>
+        // "Base de données" des numéros MoMo par artiste
+        const numerosMomo = {
+            'MANOUTON JUNIOR': '+229 01 58 46 59 86',
+            'IKA IMONLE': '+229 01 48 24 05 50',
+            "BEAU L'EUROPEEN": '+229 01 67 72 13 97'
+        };
+
+        // Récupération du nom de l'artiste depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const nomArtiste = urlParams.get('artiste');
+
+        if (nomArtiste) {
+            // Affiche le nom de l'artiste (sans le modifier)
+            document.getElementById('nom-artiste').textContent = nomArtiste;
+            document.getElementById('artiste-commentaire').textContent = nomArtiste;
+
+            // Affiche le numéro MoMo correspondant
+            const numero = numerosMomo[nomArtiste];
+            if (numero) {
+                document.getElementById('numero-momo').textContent = numero;
+            } else {
+                // Gérer le cas où l'artiste n'est pas trouvé
+                document.getElementById('numero-momo').textContent = "Numéro non disponible";
+            }
+
+            // Affiche le nombre de votes de l'artiste
+            const votes = totalVotes[nomArtiste];
+            if (votes !== undefined) {
+                document.getElementById('compteur-votes').textContent = votes;
+            } else {
+                document.getElementById('compteur-votes').textContent = "Nombre de votes non disponible";
+            }
+        }
+    </script>
+</body>
+
+</html>
